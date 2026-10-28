@@ -100,6 +100,11 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 .shot img{display:block;width:100%;height:auto;box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .3s}
 .zoom:hover img{transform:translateY(-3px)}
 .shot figcaption{font-size:13px;color:var(--muted)}
+.shots.bare{gap:10px}
+@media (min-width:760px){.shots.bare{grid-template-columns:repeat(7,minmax(0,1fr))}}
+@media (min-width:1100px){.shots.bare{grid-template-columns:repeat(var(--c),minmax(0,1fr))}}
+.shots.bare img{box-shadow:none;border-radius:4px}
+.shots.bare figcaption{text-align:center;font-family:var(--display);font-size:15px}
 .cards{display:grid;grid-template-columns:repeat(var(--m),minmax(0,1fr));gap:14px}
 @media (min-width:760px){.cards{grid-template-columns:repeat(var(--c),minmax(0,1fr))}}
 .card{background:var(--surface);padding:24px 26px;border-radius:2px;min-width:0}
@@ -212,20 +217,25 @@ const PROJECTS = [
     about:['An awareness campaign for World Autism Awareness Day, 2 April 2024, for the Foundation University Psychology Clinic in Rawalpindi.',
       'The posters, brochure and leaflet explain what autism is, its signs, its strengths and challenges, and how people can help, using friendly illustrations and puzzle-piece colour. One message runs through all of it: autism is a spectrum, and every autistic person is unique.',
       'The campaign supports UN Sustainable Development Goals 3 (Good Health and Well-being), 4 (Quality Education) and 10 (Reduced Inequalities).'],
-    role:'Campaign designer', year:'2024', deliverables:['Posters','Brochure','Leaflet'], tools:['Illustrator','Photoshop'],
+    role:'Campaign designer', year:'2024', deliverables:['Logo','Posters','Brochure','Leaflet'], tools:['Illustrator','Photoshop'],
     t:{bg:'#FBF6E9',fg:'#2C2A55',accent:'#6B4FB8',muted:'#6E6A8C',surface:'#F2EAD4',display:"'Nunito',system-ui,sans-serif",body:"'Nunito',system-ui,sans-serif",tt:'none',dw:'900',ds:'100%',dls:'-0.03em',scheme:'light'},
     coverImg:'img/autism/poster-1.jpg', cover:'Autism Awareness poster',
     sections:[
+      {title:'The logo', note:'A bold M in a navy circle, designed for the campaign and placed at the top of every piece.', cols:2, m:1, items:[['logo','Logo'],['logo-in-use','In use on the poster header']]},
       {title:'Posters & leaflet', note:'Four posters and an A5 leaflet, each covering one part of the story.', cols:5, m:2, items:[['poster-1','Autism Awareness, 2 April 2024'],['poster-2','Strengths of autism'],['poster-3','Signs of autism'],['poster-4','Difficulties and challenges'],['leaflet','World Autism Day leaflet']]},
       {title:'Brochure', note:'A tri-fold brochure in bold geometric pattern: what autism is, how you can help, signs and traits, strengths and challenges.', cols:2, m:1, items:[['brochure-front','Outside'],['brochure-back','Inside']]},
     ] },
-  { id:'typography', name:'Typography', cat:'Type Studies · Posters',
-    tagline:'Letters as image: expressive type, hierarchy and form.',
-    about:['A collection of typographic work: posters, letterform studies and experiments where the type itself carries the message.','Each piece explores a different idea, from hierarchy and spacing to expressive, image-like lettering.'],
-    role:'Designer', year:'2023–25', deliverables:['Type posters','Letterform studies','Specimen','Experiments'], tools:['Illustrator','InDesign'],
-    t:{bg:'#FFFFFF',fg:'#121212',accent:'#E1251B',muted:'#6E6E6E',surface:'#EFEFEF',display:"'DM Serif Display',Georgia,serif",body:"'Archivo',system-ui,sans-serif",tt:'none',dw:'400',ds:'100%',dls:'-0.03em',scheme:'light'},
-    cover:'Hero type poster',
-    slots:[['Type poster series','wide'],['Letterform study','half'],['Experimental type','half'],['Type specimen','third'],['Word poster','third'],['Hierarchy study','third']] },
+  { id:'typography', name:'Typography', cat:'Typeface Design · Mughal Era',
+    tagline:'Mughal Era: a display typeface built from domes, arches, minarets and jali screens.',
+    about:['Mughal Era is a decorative display typeface inspired by Mughal architecture, the 16th–18th century style that merged Persian, Indian and Islamic design into majestic domes, towering minarets, symmetrical layouts and intricate carving.',
+      'Each letter is built from a piece of that architecture: domes and spires, arches, carved doors, red sandstone and jali latticework, in a palette of deep red, white and gold. Over three rounds of sketches the design moved from over-complicated patterns to simpler, more readable forms, balancing ornament with function.'],
+    role:'Type designer, BCA semester project', year:'', deliverables:['26-letter display typeface','Research & moodboard','Concept sketches','Process booklet'], tools:['Illustrator'],
+    t:{bg:'#FBF5EC',fg:'#3A160E',accent:'#A0412A',muted:'#7C5A4A',surface:'#F1E3D0',display:"'DM Serif Display',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'400',ds:'100%',dls:'-0.02em',scheme:'light'},
+    coverImg:'img/typography/page-08.jpg', cover:'Final typeface presentation',
+    sections:[
+      {title:'The alphabet', note:'A to Z. Each letter borrows a different element of Mughal building.', cols:13, m:4, bare:true, items:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c => ['letter-'+c, c])},
+      {title:'Process booklet', note:'The ten-page booklet that documents the project from research to final letters.', cols:5, m:2, items:[['page-01','Cover'],['page-02','Introduction'],['page-03','Research & inspiration'],['page-04','Patterns & colour palette'],['page-05','Influence on design'],['page-06','Concept development'],['page-07','Typeface construction'],['page-08','Final typeface, A–L'],['page-09','Final typeface, M–Z'],['page-10','Applications & reflection']]},
+    ] },
   { id:'layouts', name:'Layouts', cat:'Editorial · Layout Design', cls:'layouts-grid',
     tagline:'Grids, hierarchy and pacing across print layouts.',
     about:['Editorial and print layouts built on clear grids: magazine spreads, brochures and covers.','The focus is on reading order, white space and making a lot of content easy to scan.'],
@@ -300,7 +310,7 @@ function renderProject(i){
     <section class="sec wrap"><div class="inner">
       <div class="sec-head"><h2>${esc(s.title)}</h2>${s.note ? `<p>${esc(s.note)}</p>` : ''}</div>
       ${s.cards ? `<div class="cards" style="--c:${s.cols};--m:${s.m}">${s.cards.map(c => `<div class="card"><h3>${esc(c.h)}</h3>${c.p ? `<p>${esc(c.p)}</p>` : `<ul>${c.list.map(l => `<li>${esc(l)}</li>`).join('')}</ul>`}</div>`).join('')}</div>` : `
-      <div class="shots" style="--c:${s.cols};--m:${s.m}">${s.items.map(([f, cap, span, tee]) => {
+      <div class="shots${s.bare ? ' bare' : ''}" style="--c:${s.cols};--m:${s.m}">${s.items.map(([f, cap, span, tee]) => {
         const src = `img/${p.id.split('-')[0]}/${f}.jpg`, alt = cap || s.title;
         const art = tee ? teeMock(src, alt, tee) : `<img src="${src}" alt="${esc(alt)}" loading="lazy">`;
         return `<figure class="shot${span ? ' span' : ''}"><button class="zoom" data-src="${src}" aria-label="Enlarge ${esc(alt)}">${art}</button>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
