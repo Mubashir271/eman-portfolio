@@ -103,6 +103,15 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 .shot img{display:block;width:100%;height:auto;box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .3s}
 .zoom:hover img{transform:translateY(-3px)}
 .shot figcaption{font-size:13px;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}
+.btn.ghost{background:none;color:var(--fg);border:1px solid color-mix(in srgb,var(--fg) 30%,transparent)}
+.btn:hover{filter:brightness(1.1)}
+.hello .inner{padding-block:56px 80px;border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent);display:grid;gap:24px}
+.hello h2{margin:0;font-family:var(--display);font-weight:var(--dw);font-size:clamp(34px,5vw,60px);line-height:1;letter-spacing:var(--dls)}
+.hello dl{display:flex;flex-wrap:wrap;gap:16px 56px;margin:0}
+.hello dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hello dd{margin:4px 0 0;font-size:clamp(18px,2vw,22px);user-select:all;font-variant-numeric:tabular-nums}
 .vid{display:block;width:100%;max-width:980px;aspect-ratio:16/9;background:#000;border-radius:3px;box-shadow:0 18px 44px rgba(0,0,0,.28)}
 .shots.bare{gap:10px}
 @media (min-width:760px){.shots.bare{grid-template-columns:repeat(7,minmax(0,1fr))}}
@@ -309,7 +318,7 @@ function renderProject(i){
   const p = PROJECTS[i], nx = PROJECTS[(i+1) % PROJECTS.length], pv = PROJECTS[(i-1+PROJECTS.length) % PROJECTS.length];
   theme(p.t);
   document.body.className = p.cls || '';
-  nav.innerHTML = `<span class="pages">${PROJECTS.map((q,j)=>`<a href="#${q.id}" title="${esc(q.name)}"${j===i?' aria-current="page"':''}>${pad(j+1)}</a>`).join('')}</span>
+  nav.innerHTML = `${pagesNav(i)}<a href="#about">About</a>
     <span class="count">${pad(i+1)} / ${pad(PROJECTS.length)}</span>
     <a href="#${pv.id}" aria-label="Previous: ${esc(pv.name)}">←</a><a href="#${nx.id}" aria-label="Next: ${esc(nx.name)}">→</a>`;
   app.innerHTML = `
@@ -355,7 +364,55 @@ function renderProject(i){
   </article>`;
 }
 
+const pagesNav = cur => `<span class="pages">${PROJECTS.map((q,j)=>`<a href="#${q.id}" title="${esc(q.name)}"${j===cur?' aria-current="page"':''}>${pad(j+1)}</a>`).join('')}</span>`;
+
+const ABOUT = {bg:'#F9F3E2',fg:'#3A0A14',accent:'#7A0C26',muted:'#7A5A5E',surface:'#F0E4C8',display:"'Playfair Display',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'700',ds:'100%',dls:'-0.01em',scheme:'light'};
+
+function renderAbout(){
+  theme(ABOUT);
+  document.body.className = '';
+  nav.innerHTML = `${pagesNav(-1)}<a href="#about" aria-current="page">About</a>`;
+  app.innerHTML = `
+  <article>
+    <header class="cover wrap"><div class="inner">
+      <div class="cover-text">
+        <div class="meta"><b>About</b><span>Graphic Designer · Rawalpindi, Pakistan</span></div>
+        <h1 style="--lw:6">Eman Mughal</h1>
+        <p class="tagline">I design brands, packaging and illustrations, and I love work that tells a cultural story, especially through Urdu letterforms and Pakistani visual culture.</p>
+        <div class="cta"><a class="btn" href="files/Eman_Mughal_Resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a><a class="btn ghost" href="#qissa-e-urdu-cafe">See the work →</a></div>
+      </div>
+      <figure class="cover-img"><img src="img/brand/hi.jpg" alt="Eman's self-caricature saying Hi!"></figure>
+    </div></header>
+    <section class="brief wrap"><div class="inner">
+      <div><h2>About me</h2>
+        <p>I’m a Graphic Design student at Foundation University (BCA Graphics, 2022–2026). My work covers branding and visual identity, packaging, illustration, typography, UI layouts and social media content, made mostly in Adobe Illustrator, Photoshop and InDesign.</p>
+        <p>My thesis, Qissa-e-Urdu Café, brings Urdu literature into a modern café brand. That thread of cultural storytelling runs through much of my work, from a Mughal Era typeface to streetwear graphics about Rawalpindi.</p></div>
+      <dl class="facts">
+        <div><dt>Education</dt><dd>BCA (Graphics), Foundation University, 2022–2026<br>Intermediate (FA), Rawalpindi Women’s University<br>Matriculation, FG Girls High School</dd></div>
+        <div><dt>Experience</dt><dd>Primary School Teacher (Grade 2), Glorious School &amp; College System<br>Summer Intern, Askari Bank Limited<br>Volunteer, Project Khudi (university society)</dd></div>
+        <div><dt>Languages</dt><dd>Urdu, English</dd></div>
+      </dl>
+    </div></section>
+    <section class="sec wrap"><div class="inner">
+      <div class="cards" style="--c:2;--m:1">
+        <div class="card"><h3>Skills</h3><ul>${['Branding & identity design','Typography','Layout design','Illustration','Packaging design','Social media design','Colour theory','UI/UX fundamentals','Print design','Sketching','Composition'].map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
+        <div class="card"><h3>Software</h3><ul>${['Adobe Illustrator','Adobe Photoshop','Adobe InDesign','Adobe After Effects','Adobe Dreamweaver','Canva','Visual Studio','MS Office','Google Workspace'].map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
+      </div>
+    </div></section>
+    <section class="hello wrap"><div class="inner">
+      <h2>Let’s work together</h2>
+      <dl><div><dt>Email</dt><dd>mughaleman94@gmail.com</dd></div><div><dt>Phone</dt><dd>+92 333 1577138</dd></div><div><dt>Based in</dt><dd>Rawalpindi, Pakistan</dd></div></dl>
+    </div></section>
+  </article>`;
+}
+
 function route(){
+  if (location.hash === '#about') {
+    renderAbout();
+    document.title = 'About · Eman Mughal';
+    window.scrollTo(0, 0);
+    return;
+  }
   const i = Math.max(0, PROJECTS.findIndex(p => p.id === location.hash.slice(1)));
   renderProject(i);
   document.title = `${PROJECTS[i].name} · Eman Mughal`;
@@ -373,7 +430,7 @@ app.addEventListener('click', e => {
 });
 addEventListener('keydown', e => {
   if (e.key === 'Escape') return closeLb();
-  if (lb || e.target.closest('input,textarea') || e.metaKey || e.ctrlKey) return;
+  if (lb || location.hash === '#about' || e.target.closest('input,textarea') || e.metaKey || e.ctrlKey) return;
   const i = PROJECTS.findIndex(p => p.id === location.hash.slice(1));
   if (i < 0) return;
   if (e.key === 'ArrowRight') location.hash = PROJECTS[(i+1) % PROJECTS.length].id;
