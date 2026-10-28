@@ -100,6 +100,7 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 .shot img{display:block;width:100%;height:auto;box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .3s}
 .zoom:hover img{transform:translateY(-3px)}
 .shot figcaption{font-size:13px;color:var(--muted)}
+.vid{display:block;width:100%;max-width:980px;aspect-ratio:16/9;background:#000;border-radius:3px;box-shadow:0 18px 44px rgba(0,0,0,.28)}
 .shots.bare{gap:10px}
 @media (min-width:760px){.shots.bare{grid-template-columns:repeat(7,minmax(0,1fr))}}
 @media (min-width:1100px){.shots.bare{grid-template-columns:repeat(var(--c),minmax(0,1fr))}}
@@ -217,11 +218,12 @@ const PROJECTS = [
     about:['An awareness campaign for World Autism Awareness Day, 2 April 2024, for the Foundation University Psychology Clinic in Rawalpindi.',
       'The posters, brochure and leaflet explain what autism is, its signs, its strengths and challenges, and how people can help, using friendly illustrations and puzzle-piece colour. One message runs through all of it: autism is a spectrum, and every autistic person is unique.',
       'The campaign supports UN Sustainable Development Goals 3 (Good Health and Well-being), 4 (Quality Education) and 10 (Reduced Inequalities).'],
-    role:'Campaign designer', year:'2024', deliverables:['Logo','Posters','Brochure','Leaflet'], tools:['Illustrator','Photoshop'],
+    role:'Campaign designer', year:'2024', deliverables:['Logo','Awareness video','Posters','Brochure','Leaflet'], tools:['Illustrator','Photoshop'],
     t:{bg:'#FBF6E9',fg:'#2C2A55',accent:'#6B4FB8',muted:'#6E6A8C',surface:'#F2EAD4',display:"'Nunito',system-ui,sans-serif",body:"'Nunito',system-ui,sans-serif",tt:'none',dw:'900',ds:'100%',dls:'-0.03em',scheme:'light'},
     coverImg:'img/autism/poster-1.jpg', cover:'Autism Awareness poster',
     sections:[
       {title:'The logo', note:'A bold M in a navy circle, designed for the campaign and placed at the top of every piece.', cols:2, m:1, items:[['logo','Logo'],['logo-in-use','In use on the poster header']]},
+      {title:'Awareness video', note:'“Not all struggles are visible!” A three-and-a-half-minute animated short that sets what the world sees against what an autistic girl experiences, ending on the campaign line “See beyond appearances.”', video:{src:'img/autism/video.mp4', poster:'img/autism/video-poster.jpg', label:'Autism awareness video'}},
       {title:'Posters & leaflet', note:'Four posters and an A5 leaflet, each covering one part of the story.', cols:5, m:2, items:[['poster-1','Autism Awareness, 2 April 2024'],['poster-2','Strengths of autism'],['poster-3','Signs of autism'],['poster-4','Difficulties and challenges'],['leaflet','World Autism Day leaflet']]},
       {title:'Brochure', note:'A tri-fold brochure in bold geometric pattern: what autism is, how you can help, signs and traits, strengths and challenges.', cols:2, m:1, items:[['brochure-front','Outside'],['brochure-back','Inside']]},
     ] },
@@ -309,7 +311,7 @@ function renderProject(i){
     ${p.sections ? p.sections.map(s => `
     <section class="sec wrap"><div class="inner">
       <div class="sec-head"><h2>${esc(s.title)}</h2>${s.note ? `<p>${esc(s.note)}</p>` : ''}</div>
-      ${s.cards ? `<div class="cards" style="--c:${s.cols};--m:${s.m}">${s.cards.map(c => `<div class="card"><h3>${esc(c.h)}</h3>${c.p ? `<p>${esc(c.p)}</p>` : `<ul>${c.list.map(l => `<li>${esc(l)}</li>`).join('')}</ul>`}</div>`).join('')}</div>` : `
+      ${s.video ? `<video class="vid" controls preload="none" playsinline poster="${s.video.poster}" aria-label="${esc(s.video.label)}"><source src="${s.video.src}" type="video/mp4"></video>` : s.cards ? `<div class="cards" style="--c:${s.cols};--m:${s.m}">${s.cards.map(c => `<div class="card"><h3>${esc(c.h)}</h3>${c.p ? `<p>${esc(c.p)}</p>` : `<ul>${c.list.map(l => `<li>${esc(l)}</li>`).join('')}</ul>`}</div>`).join('')}</div>` : `
       <div class="shots${s.bare ? ' bare' : ''}" style="--c:${s.cols};--m:${s.m}">${s.items.map(([f, cap, span, tee]) => {
         const src = `img/${p.id.split('-')[0]}/${f}.jpg`, alt = cap || s.title;
         const art = tee ? teeMock(src, alt, tee) : `<img src="${src}" alt="${esc(alt)}" loading="lazy">`;
