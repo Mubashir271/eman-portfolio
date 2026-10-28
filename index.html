@@ -256,13 +256,23 @@ const PROJECTS = [
       {title:'Billiard: settings & terms', cols:2, m:1, items:[['pool-settings','Settings (scrolling panel)'],['pool-terms','Terms & conditions']]},
       {title:'Other layouts', note:'Shorter studies in app layout and controls.', cols:3, m:1, items:[['paint-app','Paint-style drawing app'],['snapchat-login','Snapchat login layout study'],['toggle-buttons','On/off toggle buttons']]},
     ] },
-  { id:'illustration', name:'Illustration Collection', cat:'Illustration',
-    tagline:'Original digital illustrations, from sketch to final.',
-    about:['A collection of original illustrations drawn in Adobe Illustrator, many starting as pencil sketches.','It covers characters, scenes and patterns in a range of styles.'],
-    role:'Illustrator', year:'2023–25', deliverables:['Characters','Scenes','Patterns','Sketches'], tools:['Illustrator','Sketching'],
-    t:{bg:'#2A1B3C',fg:'#FFF0E4',accent:'#FF9F5A',muted:'#C6B2D6',surface:'#3A2852',display:"'Caveat',cursive",body:"'Bricolage Grotesque',system-ui,sans-serif",tt:'none',dw:'700',ds:'100%',dls:'0'},
-    cover:'Featured illustration',
-    slots:[['Sketch to final','wide'],['Character','half'],['Scene','half'],['Pattern','third'],['Portrait','third'],['Study','third']] },
+  { id:'illustration', name:'Illustration Collection', cat:'Illustration · Character Design',
+    tagline:'Characters, life scenes and fashion figures, drawn in Adobe Illustrator.',
+    about:['A collection of digital illustrations drawn in Adobe Illustrator. At its centre is a self-caricature: a character sheet with five expressions, then a five-chapter illustrated story of Eman’s own life, from afternoon tea with her family to the movies with neighbourhood friends, park trips with a uni friend, and working on an illustration project.',
+      'Alongside it are life scenes taken from line art to flat colour, storyboards, and a series of faceless fashion illustrations of women in traditional Pakistani dress.'],
+    role:'Illustrator', year:'', deliverables:['Caricature & expression sheet','Illustrated story','Scene illustrations','Storyboards','Fashion illustrations'], tools:['Illustrator','Sketching'],
+    t:{bg:'#2A1B3C',fg:'#FFF0E4',accent:'#FF9F5A',muted:'#C6B2D6',surface:'#3A2852',display:"'Caveat',cursive",body:"'Bricolage Grotesque',system-ui,sans-serif",tt:'none',dw:'700',ds:'100%',dls:'0',cw:'.45'},
+    coverImg:'img/illustration/caricature-sheet.jpg', cover:'Self-caricature and expression sheet',
+    sections:[
+      {title:'My story in five chapters', note:'The self-caricature carried through five moments from Eman’s life.', cols:2, m:1, items:[
+        ['chapter-1','Chapter 1: “Hi!” In shalwar kameez, with waist-length chocolate brown hair and big brown eyes',true],
+        ['chapter-2','Chapter 2: Afternoon tea with parents and two brothers'],['chapter-3','Chapter 3: At the movies with neighbourhood friends'],
+        ['chapter-4','Chapter 4: Swings and street food with a uni friend'],['chapter-5','Chapter 5: Working on an illustration project']]},
+      {title:'Line art to colour', note:'Each scene starts as clean brush line art before flat colour goes in.', cols:2, m:1, items:[['line-1','Line art'],['scene-1','Final colour'],['line-2','Line art'],['scene-2','Final colour']]},
+      {title:'More scenes', cols:3, m:1, items:[['scene-3','Painting in front of the Pakistan flag'],['scene-4','On stage'],['scene-5','At the desk']]},
+      {title:'Storyboards', note:'Planning a story frame by frame before drawing it.', cols:2, m:1, items:[['storyboard-strip','Storyboard strip',true],['storyboard-1','Storyboard, chapters 1–5'],['storyboard-2','Storyboard, chapters 6–10']]},
+      {title:'Fashion illustrations', note:'Faceless figures in traditional Pakistani dress, where colour, drape and pose carry the character.', cols:2, m:1, items:[['fashion-1','Pair in kameez and dupatta'],['fashion-2','Group study'],['fashion-3','Pink gown'],['fashion-4','Group in colour']]},
+    ] },
 ];
 
 const app = document.getElementById('app'), nav = document.getElementById('nav'), root = document.documentElement;
