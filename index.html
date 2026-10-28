@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Eman Mughal Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,600;62..125,800&family=Baloo+2:wght@600;800&family=Big+Shoulders+Display:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,500&family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;600&family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Noto+Nastaliq+Urdu:wght@600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Nunito:wght@400;700;900&family=Space+Mono:wght@400;700&family=Unbounded:wght@600;800&display=swap">
+<style>
+/* Layout: a dark index of themed tiles; opening a project re-themes the whole site, and each project gets a full-screen cover, a brief and a gallery */
+:root{
+  --bg:#15120F; --fg:#F2ECE3; --accent:#E2B04A; --muted:#A1978A; --surface:#201C18;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Bricolage Grotesque',system-ui,sans-serif;
+  --tt:none; --dw:800; --ds:100%; --dls:-0.02em;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;transition:background-color .5s,color .5s}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+.inner{max-width:1240px;margin:0 auto}
+
+/* top bar */
+.bar{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background-color .5s}
+.bar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.brand{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;text-decoration:none;letter-spacing:-.01em;font-size:17px}
+.brand span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:6px;font-size:13px;font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.nav a,.nav button{font:inherit;color:inherit;background:none;border:1px solid color-mix(in srgb,var(--fg) 22%,transparent);border-radius:999px;padding:6px 12px;text-decoration:none;cursor:pointer;line-height:1.2}
+.nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
+.count{font-variant-numeric:tabular-nums;color:var(--muted);padding:0 6px}
+main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
+
+/* page numbers + contact strip */
+.pages{display:none}
+@media (min-width:900px){.pages{display:flex;gap:2px}}
+.nav .pages a{border-color:transparent;padding:6px 8px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.nav .pages a[aria-current]{color:var(--accent);border-color:var(--accent)}
+.contact{background:var(--n-bg);color:var(--n-fg)}
+.contact .inner{border-top:1px solid color-mix(in srgb,var(--n-fg) 14%,transparent);padding-block:20px 28px;display:flex;flex-wrap:wrap;gap:8px 32px;font-size:14px}
+.contact span{user-select:all;font-variant-numeric:tabular-nums}
+.contact b{font-weight:600}
+
+/* project */
+.cover .inner{min-height:calc(100svh - 58px - env(safe-area-inset-top,0px));display:grid;grid-template-columns:1fr;gap:28px;align-content:center;padding-block:32px 40px}
+@media (min-width:960px){.cover .inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;gap:56px}}
+.cover-text{display:grid;gap:18px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.meta b{color:var(--accent);font-weight:700}
+.cover h1{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:clamp(54px,9vw,128px);line-height:.9;text-wrap:balance;overflow-wrap:anywhere}
+.urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;text-align:left;font-size:clamp(26px,3.4vw,40px);line-height:2;color:var(--accent);margin:-6px 0 -10px}
+.tagline{font-size:clamp(17px,1.8vw,20px);max-width:44ch;margin:0;color:color-mix(in srgb,var(--fg) 85%,var(--bg))}
+.brief .inner{display:grid;gap:32px;padding-block:56px;border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent)}
+@media (min-width:860px){.brief .inner{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px}}
+.brief h2,.gallery h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 14px;font-family:var(--body)}
+.brief p{margin:0 0 14px;max-width:62ch;font-size:17px}
+.facts{display:grid;gap:20px;margin:0}
+.facts dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:4px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:var(--surface);border-radius:999px;padding:4px 11px;font-size:14px}
+.gallery .inner{padding-block:8px 72px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.slot{grid-column:span 12;position:relative;border-radius:3px;overflow:hidden;background:var(--surface);aspect-ratio:var(--r,16/9);max-width:100%;display:grid;place-items:center;margin:0}
+.slot.empty{background:repeating-linear-gradient(135deg,var(--surface) 0 14px,color-mix(in srgb,var(--surface) 80%,var(--accent)) 14px 15px)}
+.slot img{width:100%;height:100%;object-fit:cover;display:block}
+.slot figcaption{text-align:center;padding:12px;display:grid;gap:4px}
+.slot figcaption b{font-family:var(--display);text-transform:var(--tt);font-stretch:var(--ds);font-weight:var(--dw);font-size:clamp(20px,2.4vw,28px);line-height:1.05;letter-spacing:var(--dls)}
+.slot figcaption small{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cover .slot{aspect-ratio:4/3}
+@media (min-width:700px){
+  .slot.half{grid-column:span 6;--r:4/3}
+  .slot.third{grid-column:span 4;--r:4/5}
+}
+.slot.wide{--r:16/8}
+.next{display:block;text-decoration:none;background:var(--n-bg);color:var(--n-fg)}
+.next .inner{padding-block:56px 72px;display:grid;gap:10px}
+.next small{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.next strong{font-family:var(--n-display);font-weight:var(--n-dw);text-transform:var(--n-tt);font-stretch:var(--n-ds);letter-spacing:var(--n-dls);font-size:clamp(44px,8vw,104px);line-height:.92}
+.next strong span{color:var(--n-ac);display:inline-block;transition:transform .25s}
+.next:hover strong span{transform:translateX(10px)}
+.cover-img{margin:0;justify-self:center}
+.cover-img img{display:block;max-width:100%;width:auto;max-height:calc(100svh - 150px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.tag-ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;text-align:left;font-size:clamp(20px,2.2vw,26px);line-height:2;margin:-8px 0 -14px}
+.sec .inner{padding-block:56px;border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent)}
+.sec-head{display:grid;gap:8px;margin-bottom:28px}
+.sec-head h2{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:clamp(32px,4.4vw,54px);line-height:1}
+.sec-head p{margin:0;max-width:62ch;color:var(--muted)}
+.shots{display:grid;grid-template-columns:repeat(var(--m),minmax(0,1fr));gap:20px 16px;align-items:start}
+@media (min-width:760px){.shots{grid-template-columns:repeat(var(--c),minmax(0,1fr))}}
+.shot{margin:0;display:grid;gap:10px;min-width:0}
+.shot.span{grid-column:1/-1}
+.zoom{all:unset;cursor:zoom-in;display:block;border-radius:2px}
+.zoom:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.shot img{display:block;width:100%;height:auto;box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .3s}
+.zoom:hover img{transform:translateY(-3px)}
+.shot figcaption{font-size:13px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(var(--m),minmax(0,1fr));gap:14px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(var(--c),minmax(0,1fr))}}
+.card{background:var(--surface);padding:24px 26px;border-radius:2px;min-width:0}
+.card h3{margin:0 0 10px;font-family:var(--display);font-weight:var(--dw);font-size:24px;line-height:1.15;letter-spacing:var(--dls);color:var(--fg)}
+.card p{margin:0;max-width:56ch}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.card li::marker{color:var(--accent)}
+.tee{display:block;position:relative;background:var(--surface);aspect-ratio:1;padding:9%;isolation:isolate}
+.tee svg{display:block;width:100%;height:100%}
+.tee .print{position:absolute;left:34%;right:34%;top:27%;bottom:30%;display:flex;align-items:flex-start;justify-content:center}
+.shot .tee img{width:auto;height:auto;max-width:100%;max-height:100%;box-shadow:none}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,4,5,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lb img{max-width:100%;max-height:92svh;width:auto;height:auto;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));font:600 14px/1 'Figtree',system-ui,sans-serif;color:#fff;background:rgba(255,255,255,.12);border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
+.layouts-grid .cover{background-image:linear-gradient(color-mix(in srgb,var(--accent) 12%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--accent) 12%,transparent) 1px,transparent 1px);background-size:48px 48px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="bar wrap"><div class="inner">
+  <a class="brand" href="#qissa-e-urdu-cafe">Eman Mughal<span>.</span></a>
+  <nav class="nav" id="nav"></nav>
+</div></header>
+<main id="app"></main>
+
+<script>
+// To show real work, set `src` on a slot to an image URL or data: URI, e.g. ['Menu card','half','img/menu.jpg']
+const PROJECTS = [
+  { id:'qissa-e-urdu-cafe', name:'Qissa-e-Urdu Café', urdu:'قصۂ اردو کیفے', cat:'Thesis · Branding, Print, Environmental',
+    tagline:'ہر شام ایک داستان', taglineEn:'Every evening, a story.',
+    about:['“Qissa-e-Urdu Café” is a creative concept that blends Urdu language, literature and traditional culture with modern café aesthetics, to reconnect the younger generation with their literary identity.',
+      'The identity is built on a calligraphic Nastaliq mark, a palette of deep maroon and warm parchment, and the patterns of traditional carpets and tiles. Couplets by Ghalib, Mir, Iqbal, Faiz and Jaun Elia run through the posters, social posts and the 2026 calendar.',
+      'The project supports UN Sustainable Development Goals 4 (Quality Education), 10 (Reduced Inequalities) and 11 (Sustainable Cities and Communities).'],
+    role:'Final-year thesis, sole designer', year:'2025–26', deliverables:['Logo','Poster series','Flyer','Menu','Letterhead','Envelope','File cover','Business card','Loyalty card','2026 calendar','Social posts','Pattern tiles'], tools:['Illustrator','Photoshop','InDesign'],
+    t:{bg:'#3A1216',fg:'#F2D6AE',accent:'#E2B47C',muted:'#C49E86',surface:'#4C191E',display:"'Cormorant Garamond',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'600',ds:'100%',dls:'-0.01em'},
+    coverImg:'img/qissa/poster-intro.jpg', cover:'Intro poster',
+    sections:[
+      {title:'The mark', note:'A calligraphic Nastaliq logo, used in maroon on parchment and reversed out of maroon.', cols:2, m:2, items:[['logo-on-cream','Logo on parchment'],['logo-on-maroon','Logo reversed']]},
+      {title:'Poster series', note:'Carpet patterns, white animals and one Urdu line on each poster.', cols:3, m:1, items:[['poster-peacock','“لفظوں سے ہماری پہچان ہے” · Our words are our identity'],['poster-swan','“روایت آج بھی زندہ ہے” · Tradition is still alive'],['poster-horse','“وقت بدلتا ہے، زبان نہیں” · Time changes, language does not']]},
+      {title:'Menu & flyer', note:'Bilingual menu with chai, coffee and desi snacks, and a launch flyer: “Chai, coffee aur guftagu. Where every sip tells a story.”', cols:3, m:1, items:[['menu-front','Menu cover'],['menu-inside','Menu inside'],['flyer','Flyer']]},
+      {title:'Stationery', note:'Calligraphic flourishes from the logo frame each sheet.', cols:4, m:2, items:[['letterhead','Letterhead'],['envelope','Envelope'],['file-cover','File cover'],['note-paper','Note paper']]},
+      {title:'Cards', cols:3, m:1, items:[['card-front','Business card, front'],['card-back','Business card, back'],['loyalty-back','Loyalty card: buy 8, get 1 free']]},
+      {title:'2026 calendar', note:'Each month is written large in Urdu, in its own colour, with a couplet underneath.', cols:3, m:1, items:[['cal-00','Cover',true],['cal-01','January'],['cal-02','February'],['cal-03','March'],['cal-04','April'],['cal-05','May'],['cal-06','June'],['cal-07','July'],['cal-08','August'],['cal-09','September'],['cal-10','October'],['cal-11','November'],['cal-12','December']]},
+      {title:'Social posts', note:'A couplet a day, in the brand’s two colours.', cols:3, m:2, items:[['quote-1','Jaun Elia'],['quote-2','Mir Taqi Mir'],['quote-3','Allama Iqbal'],['quote-4','Mir Taqi Mir'],['quote-5','Faiz Ahmed Faiz'],['quote-6','Mirza Ghalib']]},
+      {title:'Pattern tiles', note:'Ornamental tiles in maroon and parchment, drawn for surfaces and backgrounds across the café.', cols:5, m:2, items:[['tile-1'],['tile-2'],['tile-3'],['tile-4'],['tile-5']]},
+    ] },
+  { id:'pindimob', name:'PINDIMOB', cat:'Brand Identity · Apparel',
+    tagline:'Streetwear for the galliyan of Pindi.',
+    about:['PINDIMOB is a streetwear brand from Rawalpindi. The PM monogram is a dripping graffiti tag, made to look like something sprayed on a city wall.',
+      'Each tee graphic takes a piece of everyday Pindi life: Murree Road, Suzuki vans and Honda 70s, a late-night cup of chai, and the galliyan the city grew up in. The lettering changes with each story, from rough brush marks to Urdu calligraphy.'],
+    role:'Brand & apparel designer', year:'', deliverables:['PM monogram','Tee graphics','Typography'], tools:['Illustrator','Photoshop'],
+    t:{bg:'#111111',fg:'#F4F3EE',accent:'#FF5A1F',muted:'#9A9890',surface:'#1E1E1E',display:"'Big Shoulders Display',Impact,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'900',ds:'100%',dls:'0'},
+    coverImg:'img/pindimob/g-murree-road.jpg', cover:'Murree Road Mafia',
+    sections:[
+      {title:'The mark', note:'A dripping graffiti tag of the letters P and M.', cols:2, m:2, items:[['logo-light','PM monogram'],['logo-orange','On black']]},
+      {title:'Tee collection', note:'Eight graphics, each about a piece of Pindi, shown here on plain tees. Tap a tee to see the flat artwork.', cols:4, m:2, items:[
+        ['g-murree-road','Murree Road Mafia',0,'#0B0B0B'],['g-pindi-drift','Pindi Drift Club',0,'#CFCFCA'],['g-og-ride','OG Ride',0,'#F4F3EE'],['g-70iyan','70iyan · No New Parts',0,'#E8DCC6'],
+        ['g-galliyan','Raised in These Galliyan',0,'#F4F3EE'],['g-raja-jee','Raja Jee',0,'#CFCFCA'],['g-chai','Eik Cup Chai',0,'#E8DCC6'],['g-fajr','Open Till Fajr',0,'#F4F3EE']]},
+    ] },
+  { id:'sugar-munch', name:'Sugar Munch', cat:'Brand Identity · Brand Strategy',
+    tagline:'Indulge in the Art of Sweetness.',
+    about:['SUGAR MUNCH is a premium confectionery brand of gourmet gummies that turns everyday candy into a refined, giftable treat.',
+      'Every gummy is made with high-quality ingredients, natural fruit essences and no artificial additives. Sleek packaging, a sophisticated identity and an artisanal approach aim the brand at people who care about both flavour and looks.'],
+    role:'Founder concept, identity & business plan', year:'', deliverables:['Logo','Flyer','Brand strategy','Business plan deck'], tools:['Illustrator','PowerPoint'],
+    t:{bg:'#F7D2D2',fg:'#3B241A',accent:'#A8780F',muted:'#86584E',surface:'#F1BFC0',display:"'Playfair Display',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'700',ds:'100%',dls:'-0.01em',scheme:'light'},
+    coverImg:'img/sugar/flyer.jpg', cover:'Launch flyer',
+    sections:[
+      {title:'The mark', note:'A high-contrast serif monogram with one thin swash looping through both letters, like a ribbon on a gift box.', cols:2, m:1, items:[['logo-blush','Logo on blush'],['logo-cocoa','Logo reversed on cocoa']]},
+      {title:'Brand strategy', note:'From the Sugar Munch business plan.', cols:2, m:1, cards:[
+        {h:'Mission', p:'To elevate the gummy candy experience by merging artistry, flavour and elegance into every bite.'},
+        {h:'Vision', p:'To become the leading name in luxury confections, where design, taste and premium quality meet.'},
+        {h:'Target market', list:['Young professionals and adults aged 20–40','The luxury gifting market','Design-conscious, health-aware buyers','Boutique retailers and premium grocers']},
+        {h:'What sets it apart', list:['Elegant, minimalist packaging with a premium feel','All-natural ingredients and a clean-label promise','Flavours curated for adult palates','Messaging built on indulgence and sophistication']}]},
+      {title:'Product', cols:2, m:1, cards:[
+        {h:'Product line', list:['Signature Collection (flagship flavours)','Seasonal and limited-edition releases','Gifting boxes and curated tasting sets','Mini packs for retail displays and party favours']},
+        {h:'Key features', list:['All-natural ingredients','Curated flavours','Artisanal quality','Elegant packaging','Diet-friendly options']}]},
+      {title:'SWOT', cols:2, m:1, cards:[
+        {h:'Strengths', p:'Premium branding, clean ingredients and a mix of art, flavour and design, aimed at design-conscious adults and luxury gifting.'},
+        {h:'Weaknesses', p:'A higher price and niche luxury appeal may limit reach with mainstream candy buyers, and mass-retail distribution is hard to scale.'},
+        {h:'Opportunities', p:'Grow in luxury gifting, adopt eco-friendly packaging, try bold flavours, and collaborate with artists or wellness brands.'},
+        {h:'Threats', p:'More artisanal brands entering the premium space, economic swings, imitation by larger brands and supply-chain risk.'}]},
+    ] },
+  { id:'pehchaan-clinic', name:'Pehchaan Clinic', urdu:'پہچان', cat:'Mental Health · Identity & Campaign',
+    tagline:'A hopeful campaign for a mental health centre, built around one question: how do you stay happy?',
+    about:['Pehchaan Clinic is a mental health centre in Rawalpindi. Pehchaan means identity, so the logo turns a fingerprint into the letter P.',
+      'The campaign promotes the clinic’s “How to Stay Happy?” workshop. It runs across four awareness posters, a five-post Instagram series that builds up to the workshop, a brochure, press and magazine ads, and a full stationery set. Soft greens, leaves and calm photography keep the tone warm rather than clinical.'],
+    role:'Identity & campaign designer', year:'', deliverables:['Logo','Posters','Instagram series','Brochure','Press ad','Magazine ad','Stationery'], tools:['Illustrator','Photoshop'],
+    t:{bg:'#F1F4EC',fg:'#24361C',accent:'#5E8C2A',muted:'#66775C',surface:'#E1E9D5',display:"'Fraunces',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'600',ds:'100%',dls:'-0.02em',scheme:'light'},
+    coverImg:'img/pehchaan/poster-mindset.jpg', cover:'Benefits of a positive mindset poster',
+    sections:[
+      {title:'The mark', note:'A fingerprint drawn as the letter P: the clinic helps you find your own identity.', cols:2, m:1, items:[['logo','Logo'],['logo-reversed','Reversed on clinic green']]},
+      {title:'Awareness posters', note:'Four A3 posters that explain happiness in simple, illustrated steps.', cols:4, m:2, items:[['poster-chemicals','Happiness chemicals and how to hack them'],['poster-7-ways','7 simple ways to get and stay happy'],['poster-mindset','Benefits of a positive mindset'],['poster-unhappy','The real reasons you are unhappy']]},
+      {title:'Instagram series', note:'Five posts that lead up to the “How to Stay Happy?” workshop, from the announcement to the final call to register.', cols:5, m:1, items:[['post-1','Workshop announcement'],['post-2','What you will gain'],['post-3','A little wisdom'],['post-4','Something special'],['post-5','Register now']]},
+      {title:'Brochure', note:'A tri-fold brochure: why choose the clinic, and the real reasons people feel unhappy.', cols:2, m:1, items:[['brochure-outside','Outside'],['brochure-inside','Inside']]},
+      {title:'Press & magazine ads', cols:2, m:1, items:[['press-ad','Press ad: “Want to stay happy?”'],['magazine-ad','Magazine ad']]},
+      {title:'Stationery', note:'Diagonal bands of clinic green and grey tie every piece together.', cols:3, m:2, items:[['letterhead','Letterhead'],['file-cover-front','File cover, front'],['file-cover-back','File cover, back'],['envelope','Envelope'],['card-front','Business card, front'],['card-back','Business card, back']]},
+    ] },
+  { id:'spinx', name:'SpinX', cat:'Brand Identity · Catalogue Design',
+    tagline:'Tyres & rims. Strength in every spin.',
+    about:['SPINX is a tyres and rims brand. In the catalogue’s own words, it was founded “to elevate the driving experience through precision-engineered rims and tyres”, balancing strength, lightweight performance and timeless style.',
+      'I designed the logo, exploring four directions built around a bold X, and the 2026 Collection catalogue: product families, a fitment guide that explains wheel and tyre markings, materials and finishes, a spec page, testimonials and showroom details.'],
+    role:'Brand & catalogue designer', year:'', deliverables:['Logo','Logo explorations','2026 catalogue','Fitment guide','Infographics'], tools:['Illustrator','InDesign','Photoshop'],
+    t:{bg:'#121214',fg:'#EEEDEE',accent:'#C93C53',muted:'#9A979B',surface:'#1E1E21',display:"'Unbounded',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'100%',dls:'-0.02em'},
+    coverImg:'img/spinx/cover.jpg', cover:'Catalogue cover',
+    sections:[
+      {title:'Logo', note:'The primary wordmark, where a burgundy X cuts across an underline like a road, and three earlier explorations.', cols:3, m:1, items:[['logo-primary','Primary logo',true],['logo-alt-1','Exploration: bold X'],['logo-alt-2','Exploration: icon'],['logo-alt-3','Exploration: angled X']]},
+      {title:'2026 catalogue', note:'A nine-page A4 catalogue for the 2026 rims and tyres collection, with dark product photography and clear technical guides.', cols:3, m:2, items:[['cover','Cover'],['page-1','About & value proposition'],['page-2','Rim & tyre families'],['page-3','Fitment guide: sizes'],['page-4','Fitment guide: reading the markings'],['page-5','Materials, manufacturing & finishes'],['page-6','Product specifications'],['page-7','Testimonials'],['back-cover','Back cover: contact & showroom']]},
+    ] },
+  { id:'autism', name:'Autism', cat:'Awareness Campaign',
+    tagline:'A warm, accessible campaign for autism awareness.',
+    about:['This campaign raises awareness of autism with clear messages, friendly illustration and an accessible layout.','It runs across posters, social media and printed handouts.'],
+    role:'Campaign designer', year:'2024', deliverables:['Posters','Social posts','Illustrations','Flyer'], tools:['Illustrator','Photoshop'],
+    t:{bg:'#FFF6DE',fg:'#22304C',accent:'#D99A00',muted:'#6A7490',surface:'#FBE8B8',display:"'Nunito',system-ui,sans-serif",body:"'Nunito',system-ui,sans-serif",tt:'none',dw:'900',ds:'100%',dls:'-0.03em',scheme:'light'},
+    cover:'Campaign poster',
+    slots:[['Poster series','wide'],['Social posts','half'],['Illustrations','half'],['Flyer','third'],['Stickers & badges','third'],['Banner','third']] },
+  { id:'typography', name:'Typography', cat:'Type Studies · Posters',
+    tagline:'Letters as image: expressive type, hierarchy and form.',
+    about:['A collection of typographic work: posters, letterform studies and experiments where the type itself carries the message.','Each piece explores a different idea, from hierarchy and spacing to expressive, image-like lettering.'],
+    role:'Designer', year:'2023–25', deliverables:['Type posters','Letterform studies','Specimen','Experiments'], tools:['Illustrator','InDesign'],
+    t:{bg:'#FFFFFF',fg:'#121212',accent:'#E1251B',muted:'#6E6E6E',surface:'#EFEFEF',display:"'DM Serif Display',Georgia,serif",body:"'Archivo',system-ui,sans-serif",tt:'none',dw:'400',ds:'100%',dls:'-0.03em',scheme:'light'},
+    cover:'Hero type poster',
+    slots:[['Type poster series','wide'],['Letterform study','half'],['Experimental type','half'],['Type specimen','third'],['Word poster','third'],['Hierarchy study','third']] },
+  { id:'layouts', name:'Layouts', cat:'Editorial · Layout Design', cls:'layouts-grid',
+    tagline:'Grids, hierarchy and pacing across print layouts.',
+    about:['Editorial and print layouts built on clear grids: magazine spreads, brochures and covers.','The focus is on reading order, white space and making a lot of content easy to scan.'],
+    role:'Layout designer', year:'2023–25', deliverables:['Magazine spreads','Brochure','Book cover','Flyers'], tools:['InDesign','Photoshop'],
+    t:{bg:'#E8EDF5',fg:'#0E1B3D',accent:'#2D5BFF',muted:'#56627F',surface:'#D6DEEC',display:"'Archivo',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'125%',dls:'-0.02em',scheme:'light'},
+    cover:'Magazine spread',
+    slots:[['Feature spread','wide'],['Brochure','half'],['Book cover','half'],['Grid system','third'],['Flyer','third'],['Poster','third']] },
+  { id:'illustration', name:'Illustration Collection', cat:'Illustration',
+    tagline:'Original digital illustrations, from sketch to final.',
+    about:['A collection of original illustrations drawn in Adobe Illustrator, many starting as pencil sketches.','It covers characters, scenes and patterns in a range of styles.'],
+    role:'Illustrator', year:'2023–25', deliverables:['Characters','Scenes','Patterns','Sketches'], tools:['Illustrator','Sketching'],
+    t:{bg:'#2A1B3C',fg:'#FFF0E4',accent:'#FF9F5A',muted:'#C6B2D6',surface:'#3A2852',display:"'Caveat',cursive",body:"'Bricolage Grotesque',system-ui,sans-serif",tt:'none',dw:'700',ds:'100%',dls:'0'},
+    cover:'Featured illustration',
+    slots:[['Sketch to final','wide'],['Character','half'],['Scene','half'],['Pattern','third'],['Portrait','third'],['Study','third']] },
+];
+
+const app = document.getElementById('app'), nav = document.getElementById('nav'), root = document.documentElement;
+const pad = n => String(n).padStart(2,'0');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function theme(t){
+  for (const k of ['bg','fg','accent','muted','surface','display','body','tt','dw','ds','dls']) root.style.setProperty('--'+k, t[k]);
+  root.style.colorScheme = t.scheme || 'dark';
+}
+const vars = (p, pre) => `--${pre}-bg:${p.t.bg};--${pre}-fg:${p.t.fg};--${pre}-ac:${p.t.accent};--${pre}-display:${p.t.display};--${pre}-dw:${p.t.dw};--${pre}-tt:${p.t.tt};--${pre}-ds:${p.t.ds};--${pre}-dls:${p.t.dls}`;
+
+function slot([label, size, src], cls=''){
+  return src
+    ? `<figure class="slot ${size||''} ${cls}"><img src="${esc(src)}" alt="${esc(label)}" loading="lazy"></figure>`
+    : `<figure class="slot empty ${size||''} ${cls}" aria-label="${esc(label)} (image to come)"><figcaption><b>${esc(label)}</b><small>Image to come</small></figcaption></figure>`;
+}
+
+// Plain tee drawn in SVG; the artwork is blended onto the chest (multiply on light fabric, screen on dark)
+function teeMock(src, alt, color){
+  const dark = parseInt(color.slice(1,3),16) < 80;
+  return `<span class="tee">
+    <svg viewBox="0 0 400 440" aria-hidden="true">
+      <path d="M150 22C170 44 230 44 250 22L330 46C350 54 362 70 372 90L396 150 338 172 322 146V424H78V146L62 172 4 150 28 90C38 70 50 54 70 46Z" fill="${color}" stroke="${dark ? 'rgba(255,255,255,.14)' : 'rgba(0,0,0,.08)'}" stroke-width="2"/>
+      <path d="M150 22C170 54 230 54 250 22" fill="none" stroke="${dark ? 'rgba(255,255,255,.18)' : 'rgba(0,0,0,.12)'}" stroke-width="5"/>
+    </svg>
+    <span class="print"><img src="${src}" alt="${esc(alt)}" loading="lazy" style="mix-blend-mode:${dark ? 'screen' : 'multiply'}"></span>
+  </span>`;
+}
+
+function renderProject(i){
+  const p = PROJECTS[i], nx = PROJECTS[(i+1) % PROJECTS.length], pv = PROJECTS[(i-1+PROJECTS.length) % PROJECTS.length];
+  theme(p.t);
+  document.body.className = p.cls || '';
+  nav.innerHTML = `<span class="pages">${PROJECTS.map((q,j)=>`<a href="#${q.id}" title="${esc(q.name)}"${j===i?' aria-current="page"':''}>${pad(j+1)}</a>`).join('')}</span>
+    <span class="count">${pad(i+1)} / ${pad(PROJECTS.length)}</span>
+    <a href="#${pv.id}" aria-label="Previous: ${esc(pv.name)}">←</a><a href="#${nx.id}" aria-label="Next: ${esc(nx.name)}">→</a>`;
+  app.innerHTML = `
+  <article>
+    <header class="cover wrap"><div class="inner">
+      <div class="cover-text">
+        <div class="meta"><b>${pad(i+1)}</b><span>${esc(p.cat)}</span>${p.year ? `<span>${esc(p.year)}</span>` : ''}</div>
+        <h1>${esc(p.name)}</h1>
+        ${p.urdu ? `<p class="urdu" lang="ur">${p.urdu}</p>` : ''}
+        ${p.taglineEn ? `<p class="tag-ur" lang="ur">${esc(p.tagline)}</p><p class="tagline">${esc(p.taglineEn)}</p>` : `<p class="tagline">${esc(p.tagline)}</p>`}
+      </div>
+      ${p.coverImg ? `<figure class="cover-img"><button class="zoom" data-src="${p.coverImg}" aria-label="Enlarge ${esc(p.cover)}"><img src="${p.coverImg}" alt="${esc(p.cover)}"></button></figure>` : slot([p.cover])}
+    </div></header>
+    <section class="brief wrap"><div class="inner">
+      <div><h2>About the project</h2>${p.about.map(a=>`<p>${esc(a)}</p>`).join('')}</div>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>${esc(p.role)}</dd></div>
+        <div><dt>Deliverables</dt><dd class="chips">${p.deliverables.map(d=>`<span>${esc(d)}</span>`).join('')}</dd></div>
+        <div><dt>Tools</dt><dd>${p.tools.map(esc).join(' · ')}</dd></div>
+      </dl>
+    </div></section>
+    ${p.sections ? p.sections.map(s => `
+    <section class="sec wrap"><div class="inner">
+      <div class="sec-head"><h2>${esc(s.title)}</h2>${s.note ? `<p>${esc(s.note)}</p>` : ''}</div>
+      ${s.cards ? `<div class="cards" style="--c:${s.cols};--m:${s.m}">${s.cards.map(c => `<div class="card"><h3>${esc(c.h)}</h3>${c.p ? `<p>${esc(c.p)}</p>` : `<ul>${c.list.map(l => `<li>${esc(l)}</li>`).join('')}</ul>`}</div>`).join('')}</div>` : `
+      <div class="shots" style="--c:${s.cols};--m:${s.m}">${s.items.map(([f, cap, span, tee]) => {
+        const src = `img/${p.id.split('-')[0]}/${f}.jpg`, alt = cap || s.title;
+        const art = tee ? teeMock(src, alt, tee) : `<img src="${src}" alt="${esc(alt)}" loading="lazy">`;
+        return `<figure class="shot${span ? ' span' : ''}"><button class="zoom" data-src="${src}" aria-label="Enlarge ${esc(alt)}">${art}</button>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
+      }).join('')}</div>`}
+    </div></section>`).join('') : `
+    <section class="gallery wrap"><div class="inner">
+      <h2>The work</h2>
+      <div class="grid">${p.slots.map(s=>slot(s)).join('')}</div>
+    </div></section>`}
+    <a class="next wrap" href="#${nx.id}" style="${vars(nx,'n')}"><div class="inner">
+      <small>Next project · ${pad((i+1)%PROJECTS.length+1)}</small>
+      <strong>${esc(nx.name)} <span>→</span></strong>
+    </div></a>
+    <footer class="contact wrap" style="${vars(nx,'n')}"><div class="inner">
+      <b>Eman Mughal · Graphic Designer</b><span>mughaleman94@gmail.com</span><span>+92 333 1577138</span>
+    </div></footer>
+  </article>`;
+}
+
+function route(){
+  const i = Math.max(0, PROJECTS.findIndex(p => p.id === location.hash.slice(1)));
+  renderProject(i);
+  document.title = `${PROJECTS[i].name} · Eman Mughal`;
+  window.scrollTo(0, 0);
+}
+addEventListener('hashchange', route);
+let lb = null;
+const closeLb = () => { if (lb) { lb.remove(); lb = null; } };
+app.addEventListener('click', e => {
+  const z = e.target.closest('.zoom'); if (!z) return;
+  lb = document.createElement('div'); lb.className = 'lb';
+  lb.innerHTML = `<img src="${z.dataset.src}" alt=""><button type="button">Close</button>`;
+  lb.addEventListener('click', closeLb);
+  document.body.appendChild(lb); lb.querySelector('button').focus();
+});
+addEventListener('keydown', e => {
+  if (e.key === 'Escape') return closeLb();
+  if (lb || e.target.closest('input,textarea') || e.metaKey || e.ctrlKey) return;
+  const i = PROJECTS.findIndex(p => p.id === location.hash.slice(1));
+  if (i < 0) return;
+  if (e.key === 'ArrowRight') location.hash = PROJECTS[(i+1) % PROJECTS.length].id;
+  if (e.key === 'ArrowLeft') location.hash = PROJECTS[(i-1+PROJECTS.length) % PROJECTS.length].id;
+});
+route();
+</script>
+
+</html>
