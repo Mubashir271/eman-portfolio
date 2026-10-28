@@ -52,10 +52,10 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 /* project */
 .cover .inner{min-height:calc(100svh - 58px - env(safe-area-inset-top,0px));display:grid;grid-template-columns:1fr;gap:28px;align-content:center;padding-block:32px 40px}
 @media (min-width:960px){.cover .inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;gap:56px}}
-.cover-text{display:grid;gap:18px;min-width:0}
+.cover-text{display:grid;gap:18px;min-width:0;container-type:inline-size}
 .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .meta b{color:var(--accent);font-weight:700}
-.cover h1{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:clamp(54px,9vw,128px);line-height:.9;text-wrap:balance;overflow-wrap:anywhere}
+.cover h1{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:min(clamp(54px,9vw,128px),calc(100cqi / (var(--lw,8) * .62)));line-height:.9;text-wrap:balance;overflow-wrap:normal}
 .urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;text-align:left;font-size:clamp(26px,3.4vw,40px);line-height:2;color:var(--accent);margin:-6px 0 -10px}
 .tagline{font-size:clamp(17px,1.8vw,20px);max-width:44ch;margin:0;color:color-mix(in srgb,var(--fg) 85%,var(--bg))}
 .brief .inner{display:grid;gap:32px;padding-block:56px;border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent)}
@@ -230,16 +230,19 @@ const PROJECTS = [
       {title:'Posters & leaflet', note:'Four posters and an A5 leaflet, each covering one part of the story.', cols:5, m:2, items:[['poster-1','Autism Awareness, 2 April 2024'],['poster-2','Strengths of autism'],['poster-3','Signs of autism'],['poster-4','Difficulties and challenges'],['leaflet','World Autism Day leaflet']]},
       {title:'Brochure', note:'A tri-fold brochure in bold geometric pattern: what autism is, how you can help, signs and traits, strengths and challenges.', cols:2, m:1, items:[['brochure-front','Outside'],['brochure-back','Inside']]},
     ] },
-  { id:'typography', name:'Typography', cat:'Typeface Design · Mughal Era',
-    tagline:'Mughal Era: a display typeface built from domes, arches, minarets and jali screens.',
-    about:['Mughal Era is a decorative display typeface inspired by Mughal architecture, the 16th–18th century style that merged Persian, Indian and Islamic design into majestic domes, towering minarets, symmetrical layouts and intricate carving.',
-      'Each letter is built from a piece of that architecture: domes and spires, arches, carved doors, red sandstone and jali latticework, in a palette of deep red, white and gold. Over three rounds of sketches the design moved from over-complicated patterns to simpler, more readable forms, balancing ornament with function.'],
-    role:'Type designer, BCA semester project', year:'', deliverables:['26-letter display typeface','Research & moodboard','Concept sketches','Process booklet'], tools:['Illustrator'],
+  { id:'typography', name:'Typography', cat:'Typeface Design · Type Studies',
+    tagline:'Letters built from architecture, grids, meaning and portraits.',
+    about:['The lead project is Mughal Era, a decorative display typeface inspired by Mughal architecture, the 16th–18th century style that merged Persian, Indian and Islamic design into majestic domes, towering minarets, symmetrical layouts and intricate carving. Each letter is built from a piece of that architecture: domes and spires, arches, carved doors, red sandstone and jali latticework. Over three rounds of sketches the design moved from over-complicated patterns to simpler, more readable forms.',
+      'Alongside it: a typographic portrait where the hair and features are drawn in letters, a modular alphabet built on a 4 × 4 grid, expressive word studies where each word looks like what it means, and a 2025 typographic calendar for Foundation University Islamabad.'],
+    role:'Type designer, BCA coursework', year:'', deliverables:['Mughal Era typeface','Process booklet','Typographic portrait','Modular alphabet','Expressive type','2025 calendar'], tools:['Illustrator','Photoshop','InDesign'],
     t:{bg:'#FBF5EC',fg:'#3A160E',accent:'#A0412A',muted:'#7C5A4A',surface:'#F1E3D0',display:"'DM Serif Display',Georgia,serif",body:"'Figtree',system-ui,sans-serif",tt:'none',dw:'400',ds:'100%',dls:'-0.02em',scheme:'light'},
     coverImg:'img/typography/page-08.jpg', cover:'Final typeface presentation',
     sections:[
-      {title:'The alphabet', note:'A to Z. Each letter borrows a different element of Mughal building.', cols:13, m:4, bare:true, items:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c => ['letter-'+c, c])},
-      {title:'Process booklet', note:'The ten-page booklet that documents the project from research to final letters.', cols:5, m:2, items:[['page-01','Cover'],['page-02','Introduction'],['page-03','Research & inspiration'],['page-04','Patterns & colour palette'],['page-05','Influence on design'],['page-06','Concept development'],['page-07','Typeface construction'],['page-08','Final typeface, A–L'],['page-09','Final typeface, M–Z'],['page-10','Applications & reflection']]},
+      {title:'Mughal Era: the alphabet', note:'A to Z. Each letter borrows a different element of Mughal building.', cols:13, m:4, bare:true, items:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c => ['letter-'+c, c])},
+      {title:'Mughal Era: process booklet', note:'The ten-page booklet that documents the typeface from research to final letters.', cols:5, m:2, items:[['page-01','Cover'],['page-02','Introduction'],['page-03','Research & inspiration'],['page-04','Patterns & colour palette'],['page-05','Influence on design'],['page-06','Concept development'],['page-07','Typeface construction'],['page-08','Final typeface, A–L'],['page-09','Final typeface, M–Z'],['page-10','Applications & reflection']]},
+      {title:'Type as image', note:'A portrait whose hair, brows, eyes and lips are drawn entirely in letters, and a study where each word is set to look like what it means: a rocking chair rocks, a helium balloon floats.', cols:3, m:1, items:[['portrait','Typographic portrait'],['portrait-detail','Portrait detail: features drawn in type'],['expressive-words','Expressive word study']]},
+      {title:'Modular alphabet', note:'An a–z alphabet built from squares on a 4 × 4 grid, then reworked with triangles and curves.', cols:1, m:1, items:[['grid-1','Square modules'],['grid-2','Triangle modules'],['grid-3','Curved modules']]},
+      {title:'2025 typographic calendar', note:'A calendar for Foundation University Islamabad. Each month name runs down the page in outlined capitals beside a large two-tone month number.', cols:7, m:2, items:[['cal-01','Cover'],['cal-02','January'],['cal-03','February'],['cal-04','March'],['cal-05','April'],['cal-06','May'],['cal-07','June'],['cal-08','July'],['cal-09','August'],['cal-10','September'],['cal-11','October'],['cal-12','November'],['cal-13','December'],['cal-14','Happy New Year']]},
     ] },
   { id:'layouts', name:'Layouts', cat:'Editorial · Layout Design', cls:'layouts-grid',
     tagline:'Grids, hierarchy and pacing across print layouts.',
@@ -297,7 +300,7 @@ function renderProject(i){
     <header class="cover wrap"><div class="inner">
       <div class="cover-text">
         <div class="meta"><b>${pad(i+1)}</b><span>${esc(p.cat)}</span>${p.year ? `<span>${esc(p.year)}</span>` : ''}</div>
-        <h1>${esc(p.name)}</h1>
+        <h1 style="--lw:${Math.max(...p.name.split(' ').map(w => w.length))}">${esc(p.name)}</h1>
         ${p.urdu ? `<p class="urdu" lang="ur">${p.urdu}</p>` : ''}
         ${p.taglineEn ? `<p class="tag-ur" lang="ur">${esc(p.tagline)}</p><p class="tagline">${esc(p.taglineEn)}</p>` : `<p class="tagline">${esc(p.tagline)}</p>`}
       </div>
