@@ -29,16 +29,16 @@ a{color:inherit}
 
 /* top bar */
 .bar{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background-color .5s}
-.bar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.bar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .brand{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;text-decoration:none;letter-spacing:-.01em;font-size:17px}
-.brand span{color:var(--accent)}
-.brand{display:inline-flex;align-items:center;gap:10px}
+.brand{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
 .brand img{width:34px;height:34px;border-radius:7px;flex:none}
+.brand span{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;line-height:1}
 .nav{display:flex;align-items:center;gap:6px;font-size:13px;font-family:'Bricolage Grotesque',system-ui,sans-serif}
 .nav a,.nav button{font:inherit;color:inherit;background:none;border:1px solid color-mix(in srgb,var(--fg) 22%,transparent);border-radius:999px;padding:6px 12px;text-decoration:none;cursor:pointer;line-height:1.2}
 .nav a:hover,.nav button:hover{border-color:var(--accent);color:var(--accent)}
 .count{font-variant-numeric:tabular-nums;color:var(--muted);padding:0 6px}
-main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
+main{padding-top:calc(68px + env(safe-area-inset-top,0px))}
 
 /* page numbers + contact strip */
 .pages{display:none}
@@ -51,7 +51,7 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 .contact b{font-weight:600}
 
 /* project */
-.cover .inner{min-height:calc(100svh - 58px - env(safe-area-inset-top,0px));display:grid;grid-template-columns:1fr;gap:28px;align-content:center;padding-block:32px 40px}
+.cover .inner{min-height:calc(100svh - 68px - env(safe-area-inset-top,0px));display:grid;grid-template-columns:1fr;gap:28px;align-content:center;padding-block:32px 40px}
 @media (min-width:960px){.cover .inner{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;gap:56px}}
 .cover-text{display:grid;gap:18px;min-width:0}
 .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
@@ -129,7 +129,7 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 </style>
 
 <header class="bar wrap"><div class="inner">
-  <a class="brand" href="#qissa-e-urdu-cafe"><img src="img/brand/em-monogram.png" alt="" width="34" height="34">Eman Mughal<span>.</span></a>
+  <a class="brand" href="#qissa-e-urdu-cafe"><img src="img/brand/em-monogram.png" alt="" width="34" height="34"><span>Eman Mughal</span></a>
   <nav class="nav" id="nav"></nav>
 </div></header>
 <main id="app"></main>
