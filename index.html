@@ -55,7 +55,7 @@ main{padding-top:calc(58px + env(safe-area-inset-top,0px))}
 .cover-text{display:grid;gap:18px;min-width:0;container-type:inline-size}
 .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .meta b{color:var(--accent);font-weight:700}
-.cover h1{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:min(clamp(54px,9vw,128px),calc(100cqi / (var(--lw,8) * .62)));line-height:.9;text-wrap:balance;overflow-wrap:normal}
+.cover h1{margin:0;font-family:var(--display);font-weight:var(--dw);text-transform:var(--tt);font-stretch:var(--ds);letter-spacing:var(--dls);font-size:min(clamp(54px,9vw,128px),calc(100cqi / (var(--lw,8) * var(--cw,.62))));line-height:.9;text-wrap:balance;overflow-wrap:normal}
 .urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;text-align:left;font-size:clamp(26px,3.4vw,40px);line-height:2;color:var(--accent);margin:-6px 0 -10px}
 .tagline{font-size:clamp(17px,1.8vw,20px);max-width:44ch;margin:0;color:color-mix(in srgb,var(--fg) 85%,var(--bg))}
 .brief .inner{display:grid;gap:32px;padding-block:56px;border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent)}
@@ -210,7 +210,7 @@ const PROJECTS = [
     about:['SPINX is a tyres and rims brand. In the catalogue’s own words, it was founded “to elevate the driving experience through precision-engineered rims and tyres”, balancing strength, lightweight performance and timeless style.',
       'I designed the logo, exploring four directions built around a bold X, and the 2026 Collection catalogue: product families, a fitment guide that explains wheel and tyre markings, materials and finishes, a spec page, testimonials and showroom details.'],
     role:'Brand & catalogue designer', year:'', deliverables:['Logo','Logo explorations','2026 catalogue','Fitment guide','Infographics'], tools:['Illustrator','InDesign','Photoshop'],
-    t:{bg:'#121214',fg:'#EEEDEE',accent:'#C93C53',muted:'#9A979B',surface:'#1E1E21',display:"'Unbounded',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'100%',dls:'-0.02em'},
+    t:{bg:'#121214',fg:'#EEEDEE',accent:'#C93C53',muted:'#9A979B',surface:'#1E1E21',display:"'Unbounded',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'100%',dls:'-0.02em',cw:'.95'},
     coverImg:'img/spinx/cover.jpg', cover:'Catalogue cover',
     sections:[
       {title:'Logo', note:'The primary wordmark, where a burgundy X cuts across an underline like a road, and three earlier explorations.', cols:3, m:1, items:[['logo-primary','Primary logo',true],['logo-alt-1','Exploration: bold X'],['logo-alt-2','Exploration: icon'],['logo-alt-3','Exploration: angled X']]},
@@ -249,7 +249,7 @@ const PROJECTS = [
     about:['Interface layouts for games and apps. The main project is a full UI concept for “Billiard”, an 8 Ball Pool–style game: twelve screens from the splash and sign-up to the home menu, game tables, tournament bracket, player profile, theme shop, settings and terms, all in deep maroon and sand with a crowned 8-ball logo.',
       'Alongside it are smaller layout studies: a Paint-style drawing app, a Snapchat login screen, and a set of on/off toggle buttons.'],
     role:'UI designer', year:'', deliverables:['Game UI, 12 screens','Game logo','App layout','Login layout','Toggle buttons'], tools:['Illustrator'],
-    t:{bg:'#E8EDF5',fg:'#0E1B3D',accent:'#2D5BFF',muted:'#56627F',surface:'#D6DEEC',display:"'Archivo',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'125%',dls:'-0.02em',scheme:'light'},
+    t:{bg:'#E8EDF5',fg:'#0E1B3D',accent:'#2D5BFF',muted:'#56627F',surface:'#D6DEEC',display:"'Archivo',system-ui,sans-serif",body:"'Archivo',system-ui,sans-serif",tt:'uppercase',dw:'800',ds:'125%',dls:'-0.02em',scheme:'light',cw:'.95'},
     coverImg:'img/layouts/pool-home.jpg', cover:'Billiard game home screen',
     sections:[
       {title:'Billiard: game screens', note:'The player’s path through the game, from launch to a match and back to the menus.', cols:2, m:1, items:[['pool-splash','Splash screen'],['pool-loading','Loading'],['pool-sign-up','Sign up: Gmail or guest'],['pool-home','Home: four ways to play'],['pool-table-1v1','1 on 1 match'],['pool-table-themed','Match on a themed table'],['pool-tournament','Tournament bracket'],['pool-profile','Player profile & achievements'],['pool-theme-table','Theme shop: tables'],['pool-theme-cue','Theme shop: cues']]},
@@ -271,6 +271,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 
 function theme(t){
   for (const k of ['bg','fg','accent','muted','surface','display','body','tt','dw','ds','dls']) root.style.setProperty('--'+k, t[k]);
+  // --cw: average glyph width in em for the display face, used to fit the cover title
+  root.style.setProperty('--cw', t.cw || '.62');
   root.style.colorScheme = t.scheme || 'dark';
 }
 const vars = (p, pre) => `--${pre}-bg:${p.t.bg};--${pre}-fg:${p.t.fg};--${pre}-ac:${p.t.accent};--${pre}-display:${p.t.display};--${pre}-dw:${p.t.dw};--${pre}-tt:${p.t.tt};--${pre}-ds:${p.t.ds};--${pre}-dls:${p.t.dls}`;
